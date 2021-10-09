@@ -1,0 +1,54 @@
+{
+  "training":{
+    "arch_type": "pros",
+    "n_epochs":300,
+    "lr_policy": "step",
+    "lr_decay_iters": 100,
+    "batchSize": 2,
+    "is_test": true,
+    "is_train":false,
+    "is_pretrain":false,
+    "visual_epoch": 50,
+    "csv_name":"Location_meyer.csv"
+  },
+  "path":{
+    "data_path": "/home/myrna/myrna/data/ISBI_prostate/data_meyertest/"
+  },
+
+  "augmentation": {"pros":{
+    "shift": [0.1,0.1],
+    "rotate": 5.0,
+    "scale": [1.0,1.0],
+    "intensity": [1.0,1.0],
+    "random_flip_prob": 0.5,
+    "scale_size": [160,160,48],
+    "patch_size": [160,160,48],
+    "val_scale_size":[160,160,48],
+    "val_patch_size":[160,160,48]}
+  },
+  "model":{
+    "model_pretype":"unet3d_dsv_noag_none_dice",
+    "model_type": "unet3d_dsv_noag_none_focal_0.5_136_meyer",
+    "model_name": "unet3d_dsv_att",
+    "patience": 50,
+    "division_factor": 16,
+    "input_nc": 1,
+    "output_nc": 3,
+    "n_classes":3,
+    "lr_rate":1e-4,
+    "l2_reg_weight": 1e-6,
+    "feature_scale": 4,
+    "gpu_ids": "1",
+    "criterion": "focal",
+    "gamma": 0.5,
+    "alpha": [0.1,0.3,0.6],
+    "sum_type": "norm",
+    "e_weight": 1,
+    "optimizer_opt":"adabound",
+    "is_pooling":true,
+    "is_dethwise": false,
+    "nolinear": "nn.LeakyReLU(inplace=True)",
+    "attmodule":"None",
+    "is_res": false
+  }
+}
